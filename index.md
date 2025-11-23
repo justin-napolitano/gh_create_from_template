@@ -1,88 +1,66 @@
 ---
-title: "Create and Clone GitHub Repository Script"
-draft: false
-tags: ["GitHub", "Automation", "Scripts"]
+slug: "github-gh-create-from-template"
+title: "gh_create_from_template"
+repo: "justin-napolitano/gh_create_from_template"
+githubUrl: "https://github.com/justin-napolitano/gh_create_from_template"
+generatedAt: "2025-11-23T09:01:47.717563Z"
+source: "github-auto"
 ---
 
-# Create and Clone GitHub Repository Script
 
-## Overview
+# Create and Clone GitHub Repository Script: Technical Overview
 
-This script automates the process of creating a new GitHub repository from a template and cloning it to your local machine. The script uses the GitHub CLI to create the repository and Git to clone it. 
+This project addresses a common task in software development workflows: initializing a new GitHub repository from a standard template and preparing it for local development. The manual process of creating repositories, applying templates, and cloning can be repetitive and error-prone. This script automates that process using existing command-line tools.
 
-## Prerequisites
+## Motivation
 
-- **GitHub CLI**: Ensure you have the GitHub CLI installed. You can find installation instructions [here](https://cli.github.com/).
-- **Git**: Ensure you have Git installed on your system.
+Developers often maintain a set of repository templates to enforce consistency across projects. Creating a new repository from a template and cloning it locally is a multi-step manual process involving the GitHub web interface or multiple CLI commands. Automating this reduces friction and potential errors, saving time.
 
-## Usage
+## Problem Statement
 
-1. **Save the Script**: Save the following script to a file, for example, `create_and_clone_repo.sh`.
+Manual creation of repositories from templates requires:
 
-    ```bash
-    #!/bin/bash
+- Navigating to GitHub UI
+- Selecting the template repository
+- Configuring repository settings
+- Cloning the repository locally
 
-    # Script to create a new GitHub repository from a template and clone it
+This process is inefficient for users who frequently create similar repositories.
 
-    # Function to check if a command exists
-    command_exists() {
-        command -v "$1" >/dev/null 2>&1
-    }
+## Implementation Details
 
-    # Check if gh CLI is installed
-    if ! command_exists gh; then
-        echo "Error: GitHub CLI (gh) is not installed."
-        echo "Please install GitHub CLI from https://cli.github.com/ and try again."
-        exit 1
-    fi
+The script is written in Bash and depends on two tools:
 
-    # Prompt for the new repository name
-    read -p "Enter the new repository name: " REPO_NAME
+- **GitHub CLI (`gh`)**: Used to create the new repository from a specified template.
+- **Git**: Used to clone the newly created repository locally.
 
-    # Check if the repository name is not empty
-    if [ -z "$REPO_NAME" ]; then
-        echo "Error: Repository name cannot be empty."
-        exit 1
-    fi
+### Workflow
 
-    # Create the new repository from the template
-    gh repo create "$REPO_NAME" --template=justin-napolitano/gh_submodule_sync --public --confirm
+1. **Dependency Check**: The script first verifies that the `gh` CLI is installed. If not, it exits with an error message.
 
-    # Check if the repository creation was successful
-    if [ $? -ne 0 ]; then
-        echo "Error: Failed to create the repository."
-        exit 1
-    fi
+2. **User Input**: It prompts the user for the new repository name, enforcing a non-empty value.
 
-    # Clone the new repository
-    git clone "https://github.com/justin-napolitano/$REPO_NAME.git"
+3. **Repository Creation**: Using `gh repo create`, it creates a new public repository based on the hardcoded template `justin-napolitano/gh_submodule_sync`. The `--confirm` flag bypasses interactive prompts.
 
-    # Check if the clone was successful
-    if [ $? -eq 0 ]; then
-        echo "Repository '$REPO_NAME' created and cloned successfully."
-    else
-        echo "Error: Failed to clone the repository."
-        exit 1
-    fi
-    ```
+4. **Error Handling**: If repository creation fails, the script exits with an error.
 
-2. **Make the Script Executable**:
-    ```sh
-    chmod +x create_and_clone_repo.sh
-    ```
+5. **Cloning**: Upon successful creation, the script clones the new repository via HTTPS.
 
-3. **Run the Script**:
-    ```sh
-    ./create_and_clone_repo.sh
-    ```
+6. **Final Check**: It verifies the clone operation succeeded and reports success or failure.
 
-4. **Follow the Prompts**: The script will prompt you to enter the name of the new repository. After entering the name, it will create the repository using the template and clone it to your local machine.
+### Assumptions
 
-## Script Explanation
+- The user is authenticated with GitHub CLI.
+- The template repository `justin-napolitano/gh_submodule_sync` exists and is accessible.
+- The script is run in an environment with network access.
 
-- **Function to Check Command Existence**: The `command_exists` function checks if a command is available on the system.
-- **Check for GitHub CLI**: The script checks if the GitHub CLI (`gh`) is installed. If not, it exits with an error message.
-- **Prompt for Repository Name**: The script prompts the user to enter the new repository name.
-- **Create Repository**: The script creates the new repository using the specified template.
-- **Clone Repository**: The script clones the newly created repository to the local machine.
-- **Error Handling**: The script includes error handling to ensure each step is completed successfully. If any step fails, the script exits with an appropriate error message.
+## Practical Considerations
+
+- The script is interactive, requiring user input for the repository name.
+- Visibility is fixed to public; no option for private repositories.
+- The template repository is hardcoded, limiting flexibility.
+- Error handling covers basic failure points but could be extended.
+
+## Summary
+
+This script simplifies the creation of new GitHub repositories from a template by automating repository creation and cloning. It leverages standard CLI tools and basic shell scripting to reduce manual steps. Future improvements could enhance flexibility and usability by adding parameters and supporting additional repository configurations.
