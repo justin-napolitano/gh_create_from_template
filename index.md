@@ -21,6 +21,12 @@ seoSecondaryKeywords:
   - repository template
   - git clone
 seoOptimized: true
+topicFamily: automation
+topicFamilyConfidence: 1
+topicFamilyNotes: >-
+  The post is about a Bash script automating the creation and cloning of GitHub repositories from
+  templates using GitHub CLI and Git, directly matching the Automation family focused on automating
+  git workflows and scripting.
 ---
 
 # Create and Clone GitHub Repository Script: Technical Overview
@@ -79,4 +85,5 @@ The script is written in Bash and depends on two tools:
 ## Summary
 
 This script simplifies the creation of new GitHub repositories from a template by automating repository creation and cloning. It leverages standard CLI tools and basic shell scripting to reduce manual steps. Future improvements could enhance flexibility and usability by adding parameters and supporting additional repository configurations.
+
 
