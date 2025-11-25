@@ -1,19 +1,28 @@
 ---
 slug: github-gh-create-from-template
 id: github-gh-create-from-template
-title: Create and Clone GitHub Repository Script
+title: Automate GitHub Repository Creation with a Shell Script
 repo: justin-napolitano/gh_create_from_template
 githubUrl: https://github.com/justin-napolitano/gh_create_from_template
 generatedAt: '2025-11-24T21:34:55.898Z'
 source: github-auto
 summary: >-
-  This repository contains a shell script that automates the creation of a new
-  GitHub repository from a specified template and clones it locally. It
-  leverages the GitHub CLI and Git to streamline repository setup.
-tags: []
-seoPrimaryKeyword: ''
-seoSecondaryKeywords: []
-seoOptimized: false
+  This guide explains how to use a shell script to automate creating GitHub
+  repositories from templates and cloning them locally.
+tags:
+  - github
+  - shell scripting
+  - git
+  - github cli
+  - repository management
+seoPrimaryKeyword: github repository automation
+seoSecondaryKeywords:
+  - create github repository script
+  - automate github setup
+  - github cli usage
+  - bash repository script
+  - clone github template
+seoOptimized: true
 topicFamily: null
 topicFamilyConfidence: null
 kind: project
