@@ -7,8 +7,8 @@ githubUrl: https://github.com/justin-napolitano/gh_create_from_template
 generatedAt: '2025-11-24T21:34:55.898Z'
 source: github-auto
 summary: >-
-  This guide covers a shell script that automates creating and cloning GitHub
-  repositories from templates using the GitHub CLI.
+  This guide covers a shell script that automates creating and cloning GitHub repositories from
+  templates using the GitHub CLI.
 tags:
   - github
   - shell scripting
@@ -24,8 +24,8 @@ seoSecondaryKeywords:
   - git clone template
   - shell script for github
 seoOptimized: true
-topicFamily: null
-topicFamilyConfidence: null
+topicFamily: automation
+topicFamilyConfidence: 0.9
 kind: project
 entryLayout: project
 showInProjects: true
@@ -88,4 +88,5 @@ The script will create a new public repository on GitHub based on the `justin-na
 - Add command-line arguments to bypass interactive prompts.
 - Enhance error handling and logging.
 - Support for additional GitHub repository settings (e.g., topics, descriptions).
+
 
